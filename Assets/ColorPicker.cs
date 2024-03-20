@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class ColorPicker : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TrailRenderer trailRenderer;
+    private Color objectColor;
+
+    void Start()
+    {
+        trailRenderer = GetComponent<TrailRenderer>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Color"))
         {
             // Çarpışma yapan objenin rengini al
-            Color objectColor = other.GetComponent<Renderer>().material.color;
-
-            // Alınan rengi kullanabilirsiniz
-            Debug.Log("Çarpışan objenin rengi: " + objectColor);
+            objectColor = other.GetComponent<Renderer>().material.color;
 
             // Topun rengini değiştirmek isterseniz:
             GetComponent<Renderer>().material.color = objectColor;
+            trailRenderer.startColor = objectColor;
         }
     }
 }
