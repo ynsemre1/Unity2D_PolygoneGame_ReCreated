@@ -12,6 +12,7 @@ public class PlatformMovement : MonoBehaviour
     private Vector3 rightLocalPosition; // Sağ pozisyon (yerel)
     private Vector3 leftLocalPosition;  // Sol pozisyon (yerel)
     private bool isMovingRight = true; // Sağa mı hareket ediliyor?
+    public bool isPaused = false; // Durduruldu mu?
 
     void Start()
     {
@@ -33,7 +34,9 @@ public class PlatformMovement : MonoBehaviour
         {
             // Hareket tamamlandığında hareket yönünü tersine çevir ve platformu tekrar hareket ettir
             isMovingRight = !isMovingRight;
+            if (isPaused) return;
             MovePlatform();
         });
     }
 }
+

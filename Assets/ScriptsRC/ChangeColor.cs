@@ -6,6 +6,7 @@ public class ChangeColor : MonoBehaviour
 {   
     public GameObject platformObject;
     public GameObject enemyObject;
+    public HardLight2D hardLight2D;
 
     void Start()
     {
@@ -15,5 +16,6 @@ public class ChangeColor : MonoBehaviour
         // Oluşturulan rastgele rengi bir materyalde kullanarak nesnenin rengini değiştir
         platformObject.GetComponent<Renderer>().material.color = randomColor;
         enemyObject.GetComponent<Renderer>().material.color = randomColor;
+        hardLight2D.Color = randomColor;
     }
 }

@@ -8,21 +8,25 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject ball;
-    public HealtManagerRC[] healthManagerRC;
     public Rigidbody2D ballRB;
     public GameObject defBall;
+    public GameObject blueBall;
+    public HealtManagerRC[] healthManagerRC;
     public TextMeshProUGUI readyText;
+    public HardLight2D hardLight2D;
 
     public void Start()
     {
         ballRB.AddForce(Vector2.up);
+
+        InvokeRepeating("RandomEvent", 3f, 3f);
     }
 
     public void Update()
     {
         foreach (HealtManagerRC manager in healthManagerRC)
         {
-            if(manager.gameStop)
+            if (manager.gameStop)
             {
                 Debug.Log("Oyun Durdu");
                 ball.SetActive(false);
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         ball.SetActive(true);
         defBall.GetComponent<Renderer>().material.color = Color.white;
+        hardLight2D.Color = Color.white;
         ball.transform.position = Vector3.zero; // Başlangıç konumu (0, 0, 0) olarak ayarlanır
         ball.transform.rotation = Quaternion.identity; // Başlangıç dönüşü (0, 0, 0, 1) olarak ayarlanır
 
@@ -62,7 +67,7 @@ public class GameManager : MonoBehaviour
     IEnumerator FreezeGameForSeconds(float duration)
     {
         Time.timeScale = 0f; // Oyun zamanını durdur
-        
+
         readyText.text = "3";
         yield return new WaitForSecondsRealtime(1f);
 
@@ -77,6 +82,21 @@ public class GameManager : MonoBehaviour
         readyText.gameObject.SetActive(false);
 
         Time.timeScale = 1f; // Oyun zamanını normale geri döndür
+    }
+
+    void RandomEvent()
+    {
+        float randomDelay = Random.Range(3f, 10f); // Her fonksiyon arasında 3 ile 10 saniye arasında rastgele bir gecikme sağla
+        string functionName = "Event" + Random.Range(1, 2); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
+        Invoke(functionName, randomDelay);
+        Debug.Log(randomDelay);
+    }
+
+    void Event1()
+    {
+        Debug.Log("Event1 Called");
+        defBall.SetActive(false);
+        blueBall.SetActive(true);
     }
 }
 

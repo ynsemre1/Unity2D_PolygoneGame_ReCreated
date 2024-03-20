@@ -6,6 +6,7 @@ public class ColorPicker : MonoBehaviour
 {
     public TrailRenderer trailRenderer;
     private Color objectColor;
+    public HardLight2D hardLight2D;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class ColorPicker : MonoBehaviour
             // Topun rengini değiştirmek isterseniz:
             GetComponent<Renderer>().material.color = objectColor;
             trailRenderer.startColor = objectColor;
+
+            hardLight2D.Color = objectColor;
         }
     }
 }
