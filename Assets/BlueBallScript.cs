@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlueBallScript : MonoBehaviour
 {
+    public GameObject ball;
+    
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Enemy"))
@@ -17,6 +19,8 @@ public class BlueBallScript : MonoBehaviour
                 // Temas edilen objenin PlatformMovement bileşeninin isPaused değerini true yap
                 platformMovement.isPaused = true;
             }
+            gameObject.SetActive(false);
+            ball.SetActive(true);
         }
     }
 }

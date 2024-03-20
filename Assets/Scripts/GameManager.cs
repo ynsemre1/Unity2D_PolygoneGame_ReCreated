@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     {
         ballRB.AddForce(Vector2.up);
 
-        InvokeRepeating("RandomEvent", 3f, 3f);
+        InvokeRepeating("RandomEvent", 1f, 30f);
     }
 
     public void Update()

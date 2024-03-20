@@ -1027,6 +1027,7 @@ GameObject:
   - component: {fileID: 6622379727453949978}
   - component: {fileID: 4814433894876437075}
   - component: {fileID: 2766435905637073945}
+  - component: {fileID: 5969708507715291403}
   m_Layer: 0
   m_Name: Platform_Movement
   m_TagString: Enemy
@@ -1083,6 +1084,47 @@ MonoBehaviour:
   platformObject: {fileID: 9154483994640839629}
   enemyObject: {fileID: 7048508264776508990}
   hardLight2D: {fileID: 3517772481266632415}
+--- !u!68 &5969708507715291403
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590865629476499789}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.0240283, y: 0.3731716}
+  - {x: 1.0319679, y: 0.37317157}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &9154483994640839629
 GameObject:
   m_ObjectHideFlags: 0
