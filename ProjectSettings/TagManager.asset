@@ -9,6 +9,7 @@ TagManager:
   - Color
   - SpeedEnemy
   - HealtManager
+  - Wall
   layers:
   - Default
   - TransparentFX
