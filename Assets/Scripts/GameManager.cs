@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         ballRB.AddForce(Vector2.up);
 
-        InvokeRepeating("RandomEvent", 1f, 30f);
+        InvokeRepeating("RandomEvent", 7f, 10f);
     }
 
     public void Update()
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     void RandomEvent()
     {
         float randomDelay = Random.Range(3f, 10f); // Her fonksiyon arasında 3 ile 10 saniye arasında rastgele bir gecikme sağla
-        string functionName = "Event" + Random.Range(2, 3); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
+        string functionName = "Event" + Random.Range(1, 3); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
         Invoke(functionName, randomDelay);
         Debug.Log(randomDelay);
     }

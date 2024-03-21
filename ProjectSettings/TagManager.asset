@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Color
   - SpeedEnemy
+  - HealtManager
   layers:
   - Default
   - TransparentFX

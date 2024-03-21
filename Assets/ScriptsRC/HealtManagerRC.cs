@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealtManagerRC : MonoBehaviour
 {
     public GameObject[] coinObjects; // Alt objeler (coin'ler)
+    public GameObject[] expObjects;
     private int currentHealth; // Mevcut can miktarı
     public bool gameOver = false;
     public bool gameStop = false;
@@ -19,12 +20,12 @@ public class HealtManagerRC : MonoBehaviour
     {
         // Top, ana objenin collider'ına çarptığında
         if (other.CompareTag("Ball"))
-        {
+        {   
             gameStop = true;
             Debug.Log("OyunDurdu");
-            // Her çarpışmada canı 1 artır
+            // Her çarpışmada canı 1 azalt
             currentHealth--;
-
+            
             // Eğer can 4'e ulaştıysa, oyunu bitir
             if (currentHealth == 0)
             {
