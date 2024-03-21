@@ -133,17 +133,17 @@ public class GameManager : MonoBehaviour
 
     void StopButtonClick()
     {
-        if(Time.timeScale == 1)Time.timeScale = 0f;
+        if (Time.timeScale == 1) Time.timeScale = 0f;
         else Time.timeScale = 1f;
 
         TextMeshProUGUI buttonText = stopButton.GetComponentInChildren<TextMeshProUGUI>();
-        if(Time.timeScale == 0) buttonText.text = "Resume";
+        if (Time.timeScale == 0) buttonText.text = "Resume";
         else buttonText.text = "Stop";
     }
 
     void RestartButtonClick()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("ReCreatedScene");
     }
 
     void QuitButtonClick()
