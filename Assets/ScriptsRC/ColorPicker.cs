@@ -7,6 +7,7 @@ public class ColorPicker : MonoBehaviour
     public TrailRenderer trailRenderer;
     private Color objectColor;
     public HardLight2D hardLight2D;
+    public SpriteRenderer altigen;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class ColorPicker : MonoBehaviour
             trailRenderer.startColor = objectColor;
 
             hardLight2D.Color = objectColor;
+            altigen.color = objectColor;
         }
     }
 }
