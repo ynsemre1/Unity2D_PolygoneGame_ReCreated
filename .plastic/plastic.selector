@@ -1,0 +1,4 @@
+repository "Unity2D_PolygoneGame_ReCreated@xLeria@cloud"
+  path "/"
+    br "/main"
+    co "/main"

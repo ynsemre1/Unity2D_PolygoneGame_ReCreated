@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,15 +17,23 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI readyText;
     public HardLight2D hardLight2D;
 
+    public Button startButton;
+
     public void Start()
     {
-        ballRB.AddForce(Vector2.up);
+        Time.timeScale = 0;
+
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
+        // Topa rastgele bir kuvvet uygula
+        ballRB.AddForce(randomDirection * 2f, ForceMode2D.Impulse);
 
         InvokeRepeating("RandomEvent", 7f, 10f);
     }
 
     public void Update()
     {
+        startButton.onClick.AddListener(StartButtonClick);
+
         foreach (HealtManagerRC manager in healthManagerRC)
         {
             if (manager.gameStop)
@@ -44,6 +53,12 @@ public class GameManager : MonoBehaviour
                 //UI Panel Gelir
             }
         }
+    }
+
+    void StartButtonClick()
+    {
+        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
+        Time.timeScale = 1f;
     }
 
     public void ResetBallPositionRC()
