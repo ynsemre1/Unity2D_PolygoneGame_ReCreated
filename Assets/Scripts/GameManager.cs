@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Rigidbody2D ballRB;
     public GameObject defBall;
     public GameObject blueBall;
+    public GameObject fireBall;
     public HealtManagerRC[] healthManagerRC;
     public TextMeshProUGUI readyText;
     public HardLight2D hardLight2D;
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
     void RandomEvent()
     {
         float randomDelay = Random.Range(3f, 10f); // Her fonksiyon arasında 3 ile 10 saniye arasında rastgele bir gecikme sağla
-        string functionName = "Event" + Random.Range(1, 2); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
+        string functionName = "Event" + Random.Range(2, 3); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
         Invoke(functionName, randomDelay);
         Debug.Log(randomDelay);
     }
@@ -97,6 +98,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Event1 Called");
         defBall.SetActive(false);
         blueBall.SetActive(true);
+    }
+
+    void Event2()
+    {
+        Debug.Log("Event2 Called");
+        defBall.SetActive(false);
+        fireBall.SetActive(true);
     }
 }
 
