@@ -17,7 +17,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI readyText;
     public HardLight2D hardLight2D;
 
+    public GameObject game;
+
     public Button startButton;
+    public Button stopButton;
+    public Button restartButton;
+    public Button quitButton;
 
     public void Start()
     {
@@ -33,6 +38,10 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         startButton.onClick.AddListener(StartButtonClick);
+        stopButton.onClick.AddListener(StopButtonClick);
+        restartButton.onClick.AddListener(RestartButtonClick);
+        quitButton.onClick.AddListener(QuitButtonClick);
+
 
         foreach (HealtManagerRC manager in healthManagerRC)
         {
@@ -53,12 +62,6 @@ public class GameManager : MonoBehaviour
                 //UI Panel Gelir
             }
         }
-    }
-
-    void StartButtonClick()
-    {
-        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
-        Time.timeScale = 1f;
     }
 
     public void ResetBallPositionRC()
@@ -120,6 +123,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("Event2 Called");
         defBall.SetActive(false);
         fireBall.SetActive(true);
+    }
+
+    void StartButtonClick()
+    {
+        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
+        Time.timeScale = 1f;
+    }
+
+    void StopButtonClick()
+    {
+        if(Time.timeScale == 1)Time.timeScale = 0f;
+        else Time.timeScale = 1f;
+
+        TextMeshProUGUI buttonText = stopButton.GetComponentInChildren<TextMeshProUGUI>();
+        if(Time.timeScale == 0) buttonText.text = "Resume";
+        else buttonText.text = "Stop";
+    }
+
+    void RestartButtonClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void QuitButtonClick()
+    {
+        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
+        Application.Quit();
     }
 }
 
