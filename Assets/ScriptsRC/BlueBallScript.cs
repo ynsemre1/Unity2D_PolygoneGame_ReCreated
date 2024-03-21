@@ -18,6 +18,7 @@ public class BlueBallScript : MonoBehaviour
             {
                 // Temas edilen objenin PlatformMovement bileşeninin isPaused değerini true yap
                 platformMovement.isPaused = true;
+                platformMovement.Invoke("MovePlatform", 3f);
             }
             gameObject.SetActive(false);
             ball.SetActive(true);
