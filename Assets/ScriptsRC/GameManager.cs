@@ -33,15 +33,15 @@ public class GameManager : MonoBehaviour
         ballRB.AddForce(randomDirection * 2f, ForceMode2D.Impulse);
 
         InvokeRepeating("RandomEvent", 7f, 10f);
-    }
 
-    public void Update()
-    {
         startButton.onClick.AddListener(StartButtonClick);
         stopButton.onClick.AddListener(StopButtonClick);
         restartButton.onClick.AddListener(RestartButtonClick);
         quitButton.onClick.AddListener(QuitButtonClick);
+    }
 
+    public void Update()
+    {
 
         foreach (HealtManagerRC manager in healthManagerRC)
         {
@@ -113,13 +113,17 @@ public class GameManager : MonoBehaviour
 
     void Event1()
     {
-        Debug.Log("Event1 Called");
+        // TODO: Event Name Changed
+        
+        Debug.Log("FireBall Called");
         defBall.SetActive(false);
         blueBall.SetActive(true);
     }
 
     void Event2()
     {
+        // TODO: Event Name Changed
+
         Debug.Log("Event2 Called");
         defBall.SetActive(false);
         fireBall.SetActive(true);
@@ -143,7 +147,7 @@ public class GameManager : MonoBehaviour
 
     void RestartButtonClick()
     {
-        SceneManager.LoadScene("ReCreatedScene");
+        SceneManager.LoadScene(0);
     }
 
     void QuitButtonClick()
