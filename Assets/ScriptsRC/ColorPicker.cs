@@ -17,10 +17,11 @@ public class ColorPicker : MonoBehaviour
     {
         if (other.CompareTag("Color"))
         {
-            // Çarpışma yapan objenin rengini al
+            // Get the color of the colliding object
+
             objectColor = other.GetComponent<Renderer>().material.color;
 
-            // Topun rengini değiştirmek isterseniz:
+            // If you want to change the color of the ball:
             GetComponent<Renderer>().material.color = objectColor;
             trailRenderer.startColor = objectColor;
 

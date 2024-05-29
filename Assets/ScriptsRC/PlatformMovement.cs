@@ -17,29 +17,27 @@ public class PlatformMovement : MonoBehaviour
 
     void Start()
     {
-        // Sağ ve sol pozisyonları hesapla (yerel)
+        // Calculate the right and left positions (local)
         rightLocalPosition = transform.localPosition + Vector3.right * moveDistance;
         leftLocalPosition = transform.localPosition - Vector3.right * moveDistance;
 
-        // Platforma ilk hareket komutunu ver
+        // Give the platform the initial movement command
         MovePlatform();
     }
 
     public void MovePlatform()
     {
-            isPaused = false;
-            // Hareket yönüne göre hedef pozisyonu belirle (yerel)
-            Vector3 targetLocalPosition = isMovingRight ? rightLocalPosition : leftLocalPosition;
+        isPaused = false;
+        // Determine the target position based on the movement direction (local)
+        Vector3 targetLocalPosition = isMovingRight ? rightLocalPosition : leftLocalPosition;
 
-            // Tweening ile platformu hedef pozisyona hareket ettir
-            transform.DOLocalMove(targetLocalPosition, moveDuration).SetEase(moveEaseType).OnComplete(() =>
-            {
-                // Hareket tamamlandığında hareket yönünü tersine çevir ve platformu tekrar hareket ettir
-                isMovingRight = !isMovingRight;
-                if(isPaused) return;
-                MovePlatform();
-            });
-        
+        // Move the platform to the target position using tweening
+        transform.DOLocalMove(targetLocalPosition, moveDuration).SetEase(moveEaseType).OnComplete(() =>
+        {
+            // When the movement is complete, reverse the movement direction and move the platform again
+            isMovingRight = !isMovingRight;
+            if (isPaused) return;
+            MovePlatform();
+        });
     }
 }
-

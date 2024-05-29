@@ -14,7 +14,7 @@ public class BallScriptRC : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Objenin hızını sınırlama
+        // Limiting the speed of the object
         float currentSpeed = ballRB.velocity.magnitude;
         if (currentSpeed < minSpeed)
         {

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject defBall;
     public GameObject blueBall;
     public GameObject fireBall;
-    public HealtManagerRC[] healthManagerRC;
+    public HealthManagerRC[] healthManagerRC;
     public TextMeshProUGUI readyText;
     public HardLight2D hardLight2D;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        // Topa rastgele bir kuvvet uygula
+        // Apply a random force to the ball
         ballRB.AddForce(randomDirection * 2f, ForceMode2D.Impulse);
 
         InvokeRepeating("RandomEvent", 7f, 10f);
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
 
-        foreach (HealtManagerRC manager in healthManagerRC)
+        foreach (HealthManagerRC manager in healthManagerRC)
         {
             if (manager.gameStop)
             {
@@ -55,11 +55,10 @@ public class GameManager : MonoBehaviour
             }
             if (manager.gameOver)
             {
-                // HealthManagerRC örneği gameOver true ise buraya girecek kodlar
+                // HealthManagerRC example If gameOver is true, the codes will enter here
                 Debug.Log("Oyun bitti!");
                 ball.SetActive(false);
                 Time.timeScale = 0;
-                //UI Panel Gelir
             }
         }
     }
@@ -69,17 +68,18 @@ public class GameManager : MonoBehaviour
         ball.SetActive(true);
         defBall.GetComponent<Renderer>().material.color = Color.white;
         hardLight2D.Color = Color.white;
-        ball.transform.position = Vector3.zero; // Başlangıç konumu (0, 0, 0) olarak ayarlanır
-        ball.transform.rotation = Quaternion.identity; // Başlangıç dönüşü (0, 0, 0, 1) olarak ayarlanır
+        ball.transform.position = Vector3.zero; // Starter Pos (0, 0, 0) 
+        ball.transform.rotation = Quaternion.identity; // Starter Rot (0, 0, 0, 1) 
 
         StartCoroutine(FreezeGameForSeconds(3f));
         readyText.gameObject.SetActive(false);
-        foreach (HealtManagerRC manager in healthManagerRC)
+        foreach (HealthManagerRC manager in healthManagerRC)
         {
             manager.gameStop = false;
         }
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        // Topa rastgele bir kuvvet uygula
+
+        //Apply a random force to the ball
         ballRB.AddForce(randomDirection * 2f, ForceMode2D.Impulse);
     }
 
@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour
 
     void RandomEvent()
     {
-        float randomDelay = Random.Range(3f, 10f); // Her fonksiyon arasında 3 ile 10 saniye arasında rastgele bir gecikme sağla
-        string functionName = "Event" + Random.Range(1, 3); // 1 ve 2 arasında rastgele bir fonksiyon adı seç
+        float randomDelay = Random.Range(3f, 10f); // Provide a random delay between 3 and 10 seconds between each function
+        string functionName = "Event" + Random.Range(1, 3); //choose a random function name between 1 and 2
         Invoke(functionName, randomDelay);
         Debug.Log(randomDelay);
     }
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     void Event1()
     {
         // TODO: Event Name Changed
-        
+
         Debug.Log("FireBall Called");
         defBall.SetActive(false);
         blueBall.SetActive(true);
@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour
 
     void StartButtonClick()
     {
-        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
         Time.timeScale = 1f;
     }
 
@@ -152,7 +151,6 @@ public class GameManager : MonoBehaviour
 
     void QuitButtonClick()
     {
-        // Zaman ölçeğini 1'e ayarla (oyunu başlat)
         Application.Quit();
     }
 }

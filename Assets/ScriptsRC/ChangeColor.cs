@@ -10,10 +10,10 @@ public class ChangeColor : MonoBehaviour
 
     void Start()
     {
-        // Rastgele bir renk oluştur
+        // Random Color Create
         Color randomColor = new Color(Random.value, Random.value, Random.value);
 
-        // Oluşturulan rastgele rengi bir materyalde kullanarak nesnenin rengini değiştir
+        // Change the color of the object by using the generated random color in a material
         platformObject.GetComponent<Renderer>().material.color = randomColor;
         enemyObject.GetComponent<Renderer>().material.color = randomColor;
         hardLight2D.Color = randomColor;

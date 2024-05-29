@@ -9,13 +9,12 @@ public class CharacterMove : MonoBehaviour
 
     void Update()
     {
-        // Fare pozisyonunu al
         Vector3 farePozisyonu = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Karakterin x pozisyonunu belirtilen aralıkta kısıtla
+        // Constrain the x position of the character within the specified range
         float kisitliX = Mathf.Clamp(farePozisyonu.x, minX, maxX);
 
-        // Karakteri fare pozisyonuna doğru hareket ettir
+        // Move character towards mouse position
         transform.position = new Vector3(kisitliX, transform.position.y, transform.position.z);
     }
 }

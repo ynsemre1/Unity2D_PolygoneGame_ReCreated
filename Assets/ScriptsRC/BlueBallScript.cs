@@ -10,13 +10,14 @@ public class BlueBallScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            // Temas edilen objenin PlatformMovement bileşenini al
+            // Get the PlatformMovement component of the touched object
+
             PlatformMovement platformMovement = col.gameObject.GetComponent<PlatformMovement>();
 
-            // Eğer temas edilen objenin PlatformMovement bileşeni varsa ve bu bileşenin isPaused değeri true değilse
+            // If the touched object has a PlatformMovement component and the isPaused value of this component is not true
             if (platformMovement != null && !platformMovement.isPaused)
             {
-                // Temas edilen objenin PlatformMovement bileşeninin isPaused değerini true yap
+                // Set the isPaused value of the touched object's PlatformMovement component to true
                 platformMovement.isPaused = true;
                 platformMovement.Invoke("MovePlatform", 3f);
             }

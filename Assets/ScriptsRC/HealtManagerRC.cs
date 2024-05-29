@@ -2,53 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealtManagerRC : MonoBehaviour
+public class HealthManagerRC : MonoBehaviour
 {
-    public GameObject[] coinObjects; // Alt objeler (coin'ler)
+    public GameObject[] coinObjects; // Coin objects
     public GameObject[] expObjects;
-    private int currentHealth; // Mevcut can miktarı
+    private int currentHealth; // Current health amount
     public bool gameOver = false;
     public bool gameStop = false;
 
     private AudioSource audioSource;
-    public AudioClip collisionSound; // GameOver
+    public AudioClip collisionSound; // GameOver sound
 
 
     void Start()
     {
-        // Başlangıçta mevcut can miktarını belirle (coin sayısı kadar)
-        currentHealth = coinObjects.Length + 1; // Coin sayısına 1 ekleyerek başlangıçta 4 can yapar
+        // Determine the initial amount of health (number of coins + 1)
+        currentHealth = coinObjects.Length + 1; // By adding 1 to the number of coins, we start with 4 health
 
-        audioSource = GetComponent<AudioSource>(); // AudioSource bileşenine erişim
-
+        audioSource = GetComponent<AudioSource>(); // Access the AudioSource component
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Top, ana objenin collider'ına çarptığında
+        // When the ball collides with the main object's collider
         if (other.CompareTag("Ball"))
         {
             gameStop = true;
-            Debug.Log("OyunDurdu");
-            // Her çarpışmada canı 1 azalt
+            Debug.Log("GameStopped");
+            // Decrease health by 1 on each collision
             currentHealth--;
 
-            // Eğer can 4'e ulaştıysa, oyunu bitir
+            // If health reaches 0, end the game
             if (currentHealth == 0)
             {
                 gameOver = true;
             }
             else
             {
-                // Her bir coin objesinin aktifliğini güncelle
+                // Update the active state of each coin object
                 for (int i = 0; i < coinObjects.Length; i++)
                 {
                     coinObjects[i].SetActive(i < currentHealth - 1);
                 }
             }
 
-            audioSource.clip = collisionSound; // Ses kaynağının çalacağı sesi belirle
-            audioSource.Play(); // Ses kaynağını çal
+            audioSource.clip = collisionSound; // Set the sound to be played by the audio source
+            audioSource.Play(); // Play the audio source
         }
     }
 }
