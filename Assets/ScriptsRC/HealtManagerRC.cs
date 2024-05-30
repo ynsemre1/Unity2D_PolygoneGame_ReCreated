@@ -5,7 +5,6 @@ using UnityEngine;
 public class HealthManagerRC : MonoBehaviour
 {
     public GameObject[] coinObjects; // Coin objects
-    public GameObject[] expObjects;
     private int currentHealth; // Current health amount
     public bool gameOver = false;
     public bool gameStop = false;

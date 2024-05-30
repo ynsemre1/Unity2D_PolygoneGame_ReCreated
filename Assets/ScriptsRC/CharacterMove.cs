@@ -31,6 +31,22 @@ public class CharacterMove : NetworkBehaviour
         // Update the character's position
         transform.position = new Vector3(newX, transform.position.y, transform.position.z);
     }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwnedByServer)
+        {
+            // Sunucu tarafından yönetilen nesnelerin pozisyonu ayarlanır
+            transform.position = new Vector3(0f, .81f, 0f);
+        }
+        else if (IsClient)
+        {
+            // İstemci tarafından yönetilen nesnelerin pozisyonu ayarlanır
+            transform.position = new Vector3(0f, -0.88f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, -180f);
+
+        }
+    }
 }
 
 
