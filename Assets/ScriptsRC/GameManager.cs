@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI readyText;
     public HardLight2D hardLight2D;
 
-    public GameObject game;
-
     public Button startButton;
     public Button stopButton;
     public Button restartButton;
